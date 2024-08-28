@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section>
+      <form method="POST" name="url_shortener_form" action="/shorten_url">
+        <input type="text" name="url_input" text="" placeholder="Enter URL to shorten" pattern="https?:\/\/[\w\-\.]+\.(com|net|org|dev)" required />
+        <input type="submit" name="submit" placeholder="submit" />
+      </form>
+    </section>
+    <% if(data.sqlite.length > 0 && data.debug == 1) { %>
+    <section class="debug">
+      <h2>Debug mode enabled!</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>short_url</th>
+            <th>long_url</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% data.sqlite.forEach(url => { %>
+          <tr>
+            <td><%= url.short_url %></td>
+            <td><%= url.long_url %></td>
+          </tr>
+        <% }) %>
+        </tbody>
+      </table>
+    <a id="delete_urls" href="/delete">Delete URL data</a>
+    </section>
+    <% } %>
+  </body>
+  <script>
+    const delete_link = document.querySelector('#delete_urls')
+    delete_link.addEventListener('click', (event) => {
+      event.preventDefault()
+      const delete_confirmation = confirm('Are you sure you want to delete all urls?')
+      if(delete_confirmation) {
+        window.location.replace('http://localhost:3000/delete')
+      }
+    }, false)
+  </script>
+</html>

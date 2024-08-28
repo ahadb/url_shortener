@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="expand">
+      <p>This short URL:</p>
+      <p class="data"><%= data.short_url %></p>
+      <p>Expands to this long URL:</p>
+      <p class="data"><a href="<%= data.long_url %>"><%= data.long_url %></a></p>
+      <a href="/">Back to shortener</a>
+    </section>
+  </body>
+</html>

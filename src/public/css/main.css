@@ -1,0 +1,52 @@
+body {
+  padding: 15px;
+  font-family: sans-serif;
+  background-color: #c4a468;
+}
+form {
+  width: 100%;
+}
+input {
+  margin: 10px 0 0 0;
+}
+input[type=text] {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  font-size: 2em;
+  text-align: center;
+}
+input[type=submit] {
+  display: block;
+  width: 100%;
+  font-size: 1.4em;
+  padding: 5px 0;
+  border-radius: 10px;
+  border-color: #aaa;
+}
+.debug {
+  margin: 10px 0 0 0;
+  padding: 15px;
+  background-color: #f7daaf;
+}
+.debug h2 {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+.debug table {
+  text-align: left;
+}
+a#delete_urls {
+  display: inline-block;
+  text-align: left;
+  margin-top: 20px;
+}
+.expand p {
+  font-size: 1.3em;
+}
+.expand p.data {
+  background-color: #ccc;
+  padding: 8px;
+}
