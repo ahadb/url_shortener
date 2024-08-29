@@ -23,7 +23,6 @@ database.exec(`
 app.get('/', (request, response) => {
   const query = database.prepare('SELECT * FROM urls');
   console.log(query.all())
-  console.log(query.all().length)
 
   const debug = process.env.APP_DEBUG.toString()
 
@@ -46,13 +45,13 @@ app.post('/shorten_url', (request, response) => {
 
     const check_if_short_url_exists = database.prepare('SELECT * FROM urls WHERE short_url = ?')
     const short_url_exists = check_if_short_url_exists.get(short_url)
+
     if(short_url_exists) {
-      console.log(r)
+      console.log(short_url_exists)
       console.log(`shortURL already in database`)
     } else {
       const insert_short_url = database.prepare('INSERT INTO urls (long_url, short_url) VALUES (?, ?)');
       insert_short_url.run(long_url, short_url);
-    
       console.log(`added ${long_url} to db as ${short_url}`)
     }
   }
@@ -64,6 +63,7 @@ app.get('/expand/:shortened_url', (request, response) => {
 
   const check_if_short_url_exists = database.prepare('SELECT * FROM urls WHERE short_url = ?')
   const short_url_exists = check_if_short_url_exists.get(shortened_url)
+  
   console.log(short_url_exists)
 
   if(short_url_exists) {
